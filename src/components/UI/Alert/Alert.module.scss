@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 50dvh;
+
+  .title {
+    font-size: 40px;
+  }
+
+  .text {
+    font-weight: 500;
+  }
+}

@@ -1,25 +1,37 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { useEffect, useState } from 'react';
+import { PairService } from './api/pair.service';
+import Home from './components/Layout/Home/Home';
 
 function App() {
+  const [ pairValue, setPairValue ] = useState(null)
+
+  useEffect(() => {
+    const initialFetch = () => {
+      PairService.getAllPair().then((res) => {
+        setPairValue(res);
+      }).catch((error) => {
+        console.error("Ошибка при начальной загрузке данных:", error);
+      });
+    };
+
+    const pollingPair = () => {
+      PairService.pollingAllPair().then((res) => {
+        setPairValue(res);
+      }).catch((error) => {
+        console.error("Ошибка при поллинге данных:", error);
+      });
+    };
+
+    initialFetch();
+
+    const intervalId = setInterval(pollingPair, 10000);
+    return () => clearInterval(intervalId);
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Home pairValue={pairValue} />
+    </>
   );
 }
 

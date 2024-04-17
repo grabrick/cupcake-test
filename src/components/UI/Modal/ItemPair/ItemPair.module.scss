@@ -1,0 +1,98 @@
+@import '../../../../styles/const.scss';
+
+.items {
+  background-color: $BlueLight;
+  box-shadow: 0px 10px 20px 0px $ShadowColor;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  border-radius: 15px;
+
+  .nameWrapper {
+    background-color: $Blue2;
+    padding: 10px 25px;
+    border-radius: 10px;
+    border-top: 2px solid $BlueBorder;
+    box-shadow: 0px 5px 20px 0px $ShadowColor;
+    cursor: pointer;
+
+    @media screen and (max-width: 1165px) {
+      padding: 10px;
+    }
+
+    @media screen and (max-width: 414px) {
+      padding: 10px 5px;
+    }
+
+    .name {
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    &:hover {
+      background-color: $Blue3;
+      transition: all ease-in .2s;
+    }
+  }
+
+  .countWrapper {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    
+    @media screen and (max-width: 1165px) {
+      gap: 20px;
+    }
+
+    @media screen and (max-width: 414px) {
+      gap: 10px;
+    }
+
+    .count {
+      font-size: 15px;
+      font-weight: 500;
+      background-color: $Blue2;
+      padding: 10px 25px;
+      border-radius: 10px;
+      cursor: pointer;
+
+      @media screen and (max-width: 1165px) {
+        padding: 10px;
+      }
+
+      @media screen and (max-width: 414px) {
+        padding: 10px 5px;
+      }
+
+      &:hover {
+        background-color: $Blue3;
+        transition: all ease-in .2s;
+      }
+    }
+
+    .activeCount {
+      font-size: 15px;
+      font-weight: 500;
+      background-color: $Green;
+      padding: 10px 25px;
+      border-radius: 10px;
+      cursor: pointer;
+      border-top: 2px solid $BlueBorder;
+
+      &:hover {
+        transform: scale(1.05);
+        transition: all ease .2s;
+      }
+
+      @media screen and (max-width: 1165px) {
+        padding: 10px;
+      }
+
+      @media screen and (max-width: 414px) {
+        padding: 10px 5px;
+      }
+    }
+  }
+}
